@@ -25,7 +25,7 @@ app.use(function (req, res, next) {
 
     next();
 });
-app.use(express.static('/public/build'))
+app.use(express.static('public/build'))
 
 //Imported Routes
 app.use('/', signupRoute);
