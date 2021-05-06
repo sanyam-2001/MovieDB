@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Girassol&display=swap');
+.mainContainer{
+    display: flex;
+    align-items: center;
+    padding:6px;
+    justify-content:space-between
+}
+.imgContainer img{
+    height:60px
+}
+.titleContainer{
+    font-family: 'Girassol', cursive;
+    font-size:40px;
+}
+.w-80{
+    width: 80%;
+    margin: auto;
+}

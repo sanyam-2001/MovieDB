@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+.sidenav{
+    width: 30%;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.274);
+}
+.head{
+    font-family: 'Krona One', sans-serif; 
+    color: #fff;
+    font-size:40px;
+    padding:6px;
+    text-align:center
+}
+.but-links{
+    padding:16px;
+}
+.but-links div{
+    margin:5%
+}
+.but-links div a{
+    width:60%
+}
+@media only screen and (max-width: 768px){
+	.sidenav{
+        width: 70%
+    }
+    .but-links div a{
+        width:80%
+    }
+}

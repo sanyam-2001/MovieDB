@@ -1,0 +1,10 @@
+img:hover{
+    transform: scale(1);
+    position: relative;
+    z-index: 0;
+}
+#info{
+    box-shadow:'5px 5px 5px black';
+    position: relative;
+    z-index: 1;
+}

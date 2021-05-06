@@ -1,0 +1,5 @@
+Invalid Name SignUp: 100
+Invalid EMail Signup : 101
+Invalid Password Signup : 102
+User not Found Login : 110
+Incorrect Password Login: 111
