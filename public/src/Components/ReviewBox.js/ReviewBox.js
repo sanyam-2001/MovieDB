@@ -53,7 +53,6 @@ class ReviewBox extends Component {
 
         const comments = this.state.comms.map((c, k) => {
             const d = new Date(parseInt(c.timestamp))
-            console.log(c.timestamp, d)
             return (
                 <div className="card blue-grey darken-1" style={{ width: '100%' }} key={k}>
                     <div className="card-content white-text">

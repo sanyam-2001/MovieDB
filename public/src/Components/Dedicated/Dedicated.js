@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './Dedicated.css'
 import ReviewBox from '../ReviewBox.js/ReviewBox'
+import M from 'materialize-css'
 class Dedicated extends Component {
     constructor(props) {
         super(props);
         this.state = {
             currentMovie: {},
             ytLink: '',
-            downloads: []
+            downloads: [],
+            isFavourite: false
         }
     }
     componentDidMount() {
@@ -19,18 +21,36 @@ class Dedicated extends Component {
 
                 }
                 else this.setState({ currentMovie: res, ytLink: res.videos.results[0], downloads: res.downloads })
+            });
+        fetch(`/checkFavourites/${this.props.id}/${this.props.userID}`)
+            .then(res => res.json())
+            .then(dat => {
+                this.setState({ isFavourite: dat.success })
             })
+
     }
     handleBack = () => {
         this.props.dedicatedPage('dashboard', null, null);
     }
+    handleFavourites = () => {
+        if (!this.state.isFavourite) {
+            fetch(`/addFavourites/${this.props.id}/${this.props.userID}`)
+                .then(res => res.json())
+                .then(dat => { this.setState({ isFavourite: true }); M.toast({ html: 'Movie Added to Favourites!' }) })
+        }
+        else {
+            fetch(`/removeFavourites/${this.props.id}/${this.props.userID}`)
+                .then(res => res.json())
+                .then(dat => { this.setState({ isFavourite: false }); M.toast({ html: 'Movie removed from Favourites!' }) })
+        }
+    }
+
 
     render() {
-        console.log(this.state.currentMovie)
         const downloadLinks = this.state.downloads.map((m, i) => {
             return (
-                <div key={i} style={{ marginTop: '2.5%', textAlign: 'center', border: '1px solid black', padding: "10px" }}>
-                    <a href={m.link} style={{ width: '100%', fontSize: '10px' }}><i class="material-icons left">cloud</i>{m.title}</a>
+                <div key={i} className="blue" style={{ marginTop: '2.5%', textAlign: 'center', border: '1px solid black', padding: "10px" }}>
+                    <a href={m.link} className="white-text" style={{ width: '100%', fontSize: '10px' }}><i className="material-icons left">cloud</i>{m.title}</a>
                 </div>
             )
         })
@@ -49,9 +69,9 @@ class Dedicated extends Component {
                             <div className="card" style={{ width: '80%', margin: 'auto' }} >
                                 <div className="card-image">
                                     <img src={`https://image.tmdb.org/t/p/w500${this.state.currentMovie.poster_path}`} alt="Path" />
-                                    <a className="btn-floating halfway-fab waves-effect waves-light red" href="!#"><i className="material-icons">add</i></a>
+                                    <a className="btn-floating halfway-fab waves-effect waves-light red" onClick={this.handleFavourites}><i className="material-icons">{this.state.isFavourite ? "check" : "add"}</i></a>
                                 </div>
-                                <div class="card-action">
+                                <div className="card-action">
                                     <a href={`https://www.youtube.com/watch?v=${this.state.ytLink.key}`}>Trailer</a>
                                 </div>
                             </div>

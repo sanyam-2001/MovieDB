@@ -19,7 +19,6 @@ class Home extends Component {
             .then(res => res.json())
             .then(user => {
                 this.setState({ user: user })
-                console.log(user)
             })
     }
     dedicatedPage = (view, id, type) => {
@@ -33,7 +32,7 @@ class Home extends Component {
         return (
             <div>
                 <MainHeader name={this.state.user.name} changeRoute={this.props.changeRoute} changeID={this.props.changeID} />
-                {this.state.view === 'dashboard' ? <Dashboard dedicatedPage={this.dedicatedPage} /> : <Dedicated dedicatedPage={this.dedicatedPage} id={this.state.id} name={this.state.user.name} />}
+                {this.state.view === 'dashboard' ? <Dashboard dedicatedPage={this.dedicatedPage} /> : <Dedicated dedicatedPage={this.dedicatedPage} id={this.state.id} name={this.state.user.name} userID={this.state.user._id} />}
 
                 <Footer />
             </div>

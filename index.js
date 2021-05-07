@@ -7,7 +7,7 @@ const loginRoute = require('./Routes/loginRoute')
 const userModel = require('./dbModels/userModel')
 const downloadRoute = require('./Routes/downloadRoute')
 const commentRoutes = require('./Routes/commentRoute')
-
+const favouriteRoute = require('./Routes/favouriteRoutes')
 //Connecting to the Database
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }, () => {
     console.log("Connected to DB")
@@ -32,6 +32,7 @@ app.use('/', signupRoute);
 app.use('/', loginRoute);
 app.use('/', downloadRoute);
 app.use('/', commentRoutes);
+app.use('/', favouriteRoute);
 //Default Routes
 app.get('/default', (req, res) => {
     res.send(JSON.stringify({ success: true, code: 200, response: { message: "Server Up and Running" } }));

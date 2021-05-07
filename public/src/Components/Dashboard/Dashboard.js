@@ -15,7 +15,6 @@ class Dashboard extends Component {
         this.setState({ currentSearch: this.searchRef.current.value })
     }
     render() {
-        console.log(this.state.currentSearch)
         return (
             <div>
                 <div className="w-80">

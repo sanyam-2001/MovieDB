@@ -45,7 +45,6 @@ class Signup extends Component {
                 M.toast({ html: 'Request Processed!' })
 
                 if (result.code === 200) {
-                    console.log(result)
                     this.props.changeID(result.response.userID)
                     this.props.changeRoute('home')
                 }

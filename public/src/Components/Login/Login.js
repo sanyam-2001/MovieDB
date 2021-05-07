@@ -44,7 +44,6 @@ class Login extends Component {
                         M.toast({ html: 'Incorrect Password' })
                     }
                     if (data.code === 200) {
-                        console.log(data)
                         this.props.changeID(data.response.userID)
                         this.props.changeRoute('home')
 
